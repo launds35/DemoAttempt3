@@ -1,0 +1,14 @@
+﻿<Application x:Class="DemoAttempt3.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DemoAttempt3"
+             StartupUri="Auth.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="Main">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="Second">#7FFF00</SolidColorBrush>
+            <SolidColorBrush x:Key="Accent">#00FA9A</SolidColorBrush>
+            <SolidColorBrush x:Key="Discount">#2E8B57</SolidColorBrush>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

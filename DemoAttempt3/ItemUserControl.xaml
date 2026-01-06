@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="DemoAttempt3.ItemUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DemoAttempt3" FontFamily="Times New Roman"
+             mc:Ignorable="d" Height="235" Background="{DynamicResource Second}" Width="957" >
+    <Border BorderBrush="Black" BorderThickness="2">
+        <Grid x:Name="ImageBox">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="Black" Margin="10,10,5,10"  BorderThickness="3" Grid.Column="0">
+                <Image x:Name="PhotoBox" HorizontalAlignment="Center" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" Width="300" Source="/picture.png"/>
+
+            </Border>
+            <Border BorderBrush="Black" Margin="5,10,5,10" BorderThickness="2" Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="CategoryLabel" Content="Label" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" FontSize="18px"/>
+                    <Label x:Name="Description" Content="Label" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1"/>
+                    <Label x:Name="Fabric" Content="Label" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2"/>
+                    <Label x:Name="Supplier" Content="Label" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3"/>
+                    <Label Content="Цена:" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4"/>
+                    <Label x:Name="UnitOfMeasure" Content="Label" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5"/>
+                    <Label x:Name="Count" Content="Label" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6"/>
+                    <TextBlock x:Name="OldPrice" HorizontalAlignment="Left" Margin="68,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="NewPrice" HorizontalAlignment="Left" Margin="110,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border x:Name="DiscountBorder" BorderBrush="Black" Margin="0,10,10,10" BorderThickness="3" Grid.Column="2">
+                <Label x:Name="Discount" Grid.Column="2" Content="Label" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="30px"/>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>
