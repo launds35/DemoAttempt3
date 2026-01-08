@@ -50,6 +50,104 @@ namespace DemoAttempt3.Data
             return null;
         }
 
+        public static int GetMaxId()
+        {
+            try
+            {
+                using (SqlConnection conn = Db.GetConnection())
+                {
+                    string sql = @"SELECT MAX(IdGood) FROM Goods;";
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Введен неверный логин или пароль", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return -1;
+        }
+
+        public static List<ComboBoxItems> GetFabrics()
+        {
+            var list = new List<ComboBoxItems>();
+            try
+            {
+                using (SqlConnection conn = Db.GetConnection())
+                {
+                    string sql = @"SELECT IdFabric, Fabric FROM Fabrics;";
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new ComboBoxItems
+                            {
+                                Id = reader.GetInt32(0),
+                                Name = reader.GetString(1)
+                            });
+                        }
+                    }
+
+                    return list;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка загрузки выпадающего списка", "Ошибка работы с базой данных", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return null;
+        }
+
+        public static List<ComboBoxItems> GetCategories()
+        {
+            var list = new List<ComboBoxItems>();
+            try
+            {
+                using (SqlConnection conn = Db.GetConnection())
+                {
+                    string sql = @"SELECT IdCategory, Category FROM Categories;";
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new ComboBoxItems
+                            {
+                                Id = reader.GetInt32(0),
+                                Name = reader.GetString(1)
+                            });
+                        }
+                    }
+
+                    return list;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка загрузки выпадающего списка", "Ошибка работы с базой данных", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return null;
+        }
+
         public static List<Good> GetGoods()
         {
             var list = new List<Good>();

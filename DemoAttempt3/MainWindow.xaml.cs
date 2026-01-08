@@ -3,6 +3,8 @@ using DemoAttempt3.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Data;
+using System.Windows.Media.Animation;
 
 namespace DemoAttempt3
 {
@@ -20,21 +22,71 @@ namespace DemoAttempt3
             CurrentUser = user;
             ShowRoleComponents();
             Goods = DbHelper.GetGoods();
-
+            goodView = CollectionViewSource.GetDefaultView(Goods);
+            goodView.Filter = FilterGoods;
             LoadGoods();
+        }
+
+        private bool FilterGoods(object obj)
+        {
+            if (!(obj is Good good))
+            {
+                return false; 
+            }
+
+            string search = SearchBox?.Text.ToLower();
+
+            bool searchMatch = string.IsNullOrWhiteSpace(search) ||
+                good.Category?.ToLower().Contains(search) == true ||
+                good.Description?.ToLower().Contains(search) == true ||
+                good.Fabric?.ToLower().Contains(search) == true ||
+                good.Supplier?.ToLower().Contains(search) == true ||
+                good.GoodName?.ToLower().Contains(search) == true ||
+                good.Article?.ToLower().Contains(search) == true;
+
+            //bool providerMatch = true;
+
+            //if(FilterBox.Sele)
+
+            return searchMatch;
         }
 
         private void LoadGoods()
         {
             var isAdmin = false;
+
             if (CurrentUser != null && CurrentUser.Role == "Администратор")
             {
                 isAdmin = true;
             }
+
             ItemsPanel.Children.Clear();
-            foreach (Good good in Goods)
+
+            foreach (Good good in goodView)
             {
                 var item = new ItemUserControl(good, isAdmin);
+                item.Edited += RefreshGoods;
+                ItemsPanel.Children.Add(item);
+            }
+        }
+
+        private void RefreshGoods()
+        {
+            Goods = DbHelper.GetGoods();
+
+            var isAdmin = false;
+
+            if (CurrentUser != null && CurrentUser.Role == "Администратор")
+            {
+                isAdmin = true;
+            }
+
+            ItemsPanel.Children.Clear();
+
+            foreach (Good good in goodView)
+            {
+                var item = new ItemUserControl(good, isAdmin);
+                item.Edited += RefreshGoods;
                 ItemsPanel.Children.Add(item);
             }
         }
@@ -44,6 +96,7 @@ namespace DemoAttempt3
             if (CurrentUser != null)
             {
                 FullNameLabel.Content = CurrentUser.Name;
+
                 if (CurrentUser.Role == "Администратор")
                 {
                     this.Title = "Главное окно (Администратор)";
@@ -62,6 +115,8 @@ namespace DemoAttempt3
                     FilterBox.Visibility = Visibility.Collapsed;
                     SortBox.Visibility = Visibility.Collapsed;
                 }
+
+                BackButton.Content = "Выйти";
             }
             else
             {
@@ -77,6 +132,27 @@ namespace DemoAttempt3
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditWindow wnd = new AddEditWindow(null, false)
+            {
+                Owner = App.Current.MainWindow
+            };
+            wnd.Closed += (s, args) => RefreshGoods();
+            wnd.ShowDialog();
+        }
+
+        private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if(goodView == null)
+            {
+                return;
+            }
+
+            goodView.Refresh();
+            LoadGoods();
         }
     }
 }

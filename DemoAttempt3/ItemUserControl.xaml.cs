@@ -13,12 +13,30 @@ namespace DemoAttempt3
     /// </summary>
     public partial class ItemUserControl : UserControl
     {
+        public event Action Edited;
+        private Good CurrentGood;
         public ItemUserControl(Models.Good good, bool IsAdmin)
         {
             InitializeComponent();
-            LoadGood(good);
+            CurrentGood = good;
+            LoadGood(CurrentGood);
+            if (IsAdmin)
+            {
+                MouseDoubleClick += Edit_DoubleClick;
+            }
         }
-        
+
+        private void Edit_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            AddEditWindow wnd = new AddEditWindow(CurrentGood, true)
+            {
+                Owner = App.Current.MainWindow
+            };
+            wnd.Closed += (s, args) => Edited?.Invoke();
+            wnd.ShowDialog();
+           
+        }
+
         private void LoadGood(Models.Good good)
         {
             if (good != null)

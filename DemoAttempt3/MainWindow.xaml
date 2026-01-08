@@ -3,16 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DemoAttempt3"
+        xmlns:local="clr-namespace:DemoAttempt3" Icon="/Icon.ico" Background="{DynamicResource Main}"
         mc:Ignorable="d" FontSize="18px" FontFamily="Times New Roman"
         Title="MainWindow" Height="650" Width="1150">
     <Grid>
         <Button x:Name="BackButton" Content="Назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="40" Width="96" Background="{DynamicResource Accent}" Click="BackButton_Click"/>
-        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="40" Width="96" Background="{DynamicResource Accent}"/>
+        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="40" Width="96" Background="{DynamicResource Accent}" Click="AddButton_Click"/>
         <ScrollViewer Margin="120,65,0,0">
             <StackPanel x:Name="ItemsPanel"></StackPanel>
         </ScrollViewer>
-        <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Margin="120,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216"/>
+        <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Margin="120,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" TextChanged="SearchBox_TextChanged"/>
         <ComboBox x:Name="SortBox" HorizontalAlignment="Left" Margin="370,19,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="FilterBox" HorizontalAlignment="Left" Margin="530,19,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="FullNameLabel" Content="Label" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top"/>
