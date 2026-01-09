@@ -8,7 +8,9 @@
         public string UnitOfMeasure { get; set; }
         public double Price { get; set; }
         public string Supplier { get; set; }
+        public int IdFabric { get; set; }
         public string Fabric { get; set; }
+        public int IdCategory { get; set; }
         public string Category { get; set; }
         public int Discount { get; set; }
         public int Count { get; set; }

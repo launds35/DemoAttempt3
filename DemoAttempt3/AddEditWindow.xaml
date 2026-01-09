@@ -28,7 +28,7 @@
         <Label Grid.Row="0" Grid.Column="2" Content="Единица измерения" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
         <TextBox x:Name="UnitOfMeasureBox" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
         <Label Grid.Row="0" Grid.Column="3" Content="Цена" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
-        <TextBox x:Name="PriceBox" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="PriceBox" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" PreviewTextInput="PriceBox_PreviewTextInput"/>
         <Label Grid.Row="1" Grid.Column="0" Content="Поставщик" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
         <TextBox x:Name="SupplierBox" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
         <Label Grid.Row="1" Grid.Column="1" Content="Производитель" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
@@ -36,13 +36,13 @@
         <Label Grid.Row="1" Grid.Column="2" Content="Категория" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
         <ComboBox x:Name="CategoryComboBox" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
         <Label Grid.Row="1" Grid.Column="3" Content="Скидка" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
-        <TextBox x:Name="DiscountBox" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="DiscountBox" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" PreviewTextInput="DiscountBox_PreviewTextInput"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Количество на складе" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
-        <TextBox x:Name="CountBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="CountBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" PreviewTextInput="DiscountBox_PreviewTextInput"/>
         <Label x:Name="PhotoLabel" Grid.Row="2" Grid.Column="2" Content="Фото" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,40"/>
-        <Button x:Name="ChoosePhotoButton" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"  Content="Выбрать файл" VerticalAlignment="Center" Width="120" Background="{DynamicResource Accent}"/>
-        <Button x:Name="DeleteButton" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center"  Content="Удалить" VerticalAlignment="Center" Width="120" Background="{DynamicResource Accent}"/>
-        <Button x:Name="AddEditButton" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center"  Content="Добавить" VerticalAlignment="Center" Width="120" Background="{DynamicResource Accent}"/>
+        <Button x:Name="ChoosePhotoButton" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"  Content="Выбрать файл" VerticalAlignment="Center" Width="120" Background="{DynamicResource Accent}" Click="ChoosePhotoButton_Click"/>
+        <Button x:Name="DeleteButton" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center"  Content="Удалить" VerticalAlignment="Center" Width="120" Background="{DynamicResource Accent}" Click="DeleteButton_Click"/>
+        <Button x:Name="AddEditButton" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center"  Content="Добавить" VerticalAlignment="Center" Width="120" Background="{DynamicResource Accent}" Click="AddEditButton_Click"/>
         <Label x:Name="IdLabel" Content="Label" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Center"/>
         <Label Grid.Row="1" Grid.Column="1" Content="Наименование" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,65,0,0" Grid.RowSpan="2"/>
         <TextBox x:Name="DescriptionBox" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="180" Height="36"/>
